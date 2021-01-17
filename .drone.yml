@@ -1,0 +1,19 @@
+kind: pipeline
+type: docker
+name: release
+
+trigger:
+  event:
+    - tag
+
+steps:
+- name: docker  
+  image: plugins/docker
+  settings:
+    repo:
+      from_secret: repo
+    auto_tag: true
+    username:
+      from_secret: username
+    password:
+      from_secret: password
